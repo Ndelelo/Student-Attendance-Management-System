@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}Teacher Dashboard - Attendance System{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h2>Teacher Dashboard</h2>
+    
+    <div class="quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="action-buttons">
+            <a href="{{ url_for('mark_attendance') }}" class="btn btn-primary">Mark Attendance</a>
+            <a href="{{ url_for('manage_attendance') }}" class="btn btn-secondary">Manage Attendance</a>
+            <a href="{{ url_for('generate_report') }}" class="btn btn-secondary">Generate Report</a>
+        </div>
+    </div>
+    
+    <div class="recent-activity">
+        <h3>Recent Activity</h3>
+        <ul class="activity-list">
+            <li>Attendance marked for Class A on Feb 25, 2025</li>
+            <li>Attendance marked for Class B on Feb 24, 2025</li>
+            <li>Report generated on Feb 23, 2025</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

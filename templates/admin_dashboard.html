@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}Admin Dashboard - Attendance System{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h2>Admin Dashboard</h2>
+    
+    <div class="dashboard-stats">
+        <div class="stat-card">
+            <h3>Total Users</h3>
+            <p class="stat-value">42</p>
+        </div>
+        <div class="stat-card">
+            <h3>Students</h3>
+            <p class="stat-value">30</p>
+        </div>
+        <div class="stat-card">
+            <h3>Teachers</h3>
+            <p class="stat-value">10</p>
+        </div>
+        <div class="stat-card">
+            <h3>Admins</h3>
+            <p class="stat-value">2</p>
+        </div>
+    </div>
+    
+    <div class="quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="action-buttons">
+            <a href="{{ url_for('user_management') }}" class="btn btn-primary">Manage Users</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}User Management - Attendance System{% endblock %}
+
+{% block content %}
+<div class="user-management">
+    <h2>User Management</h2>
+    
+    <div class="user-filter">
+        <label for="role-filter">Filter by Role:</label>
+        <select id="role-filter">
+            <option value="all">All</option>
+            <option value="student">Students</option>
+            <option value="teacher">Teachers</option>
+            <option value="admin">Admins</option>
+        </select>
+    </div>
+    
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td>
+                    <a href="{{ url_for('edit_user', user_id=user.id) }}" class="btn btn-small">Edit</a>
+                    <button class="btn btn-small btn-danger delete-user" data-id="{{ user.id }}">Delete</button>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">No users found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

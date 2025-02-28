@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}Student Dashboard - Attendance System{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h2>Student Dashboard</h2>
+    <div class="dashboard-stats">
+        <div class="stat-card">
+            <h3>Attendance Rate</h3>
+            <p class="stat-value">85%</p>
+        </div>
+        <div class="stat-card">
+            <h3>Present Days</h3>
+            <p class="stat-value">17</p>
+        </div>
+        <div class="stat-card">
+            <h3>Absent Days</h3>
+            <p class="stat-value">3</p>
+        </div>
+    </div>
+    
+    <div class="quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="action-buttons">
+            <a href="{{ url_for('my_attendance') }}" class="btn btn-primary">View My Attendance</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

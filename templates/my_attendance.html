@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}My Attendance - Attendance System{% endblock %}
+
+{% block content %}
+<div class="attendance-record">
+    <h2>My Attendance</h2>
+    
+    <div class="attendance-filter">
+        <label for="month">Filter by Month:</label>
+        <select id="month" name="month">
+            <option value="all">All</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <!-- Add other months -->
+        </select>
+    </div>
+    
+    <table class="attendance-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Marked By</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendance in attendances %}
+            <tr>
+                <td>{{ attendance.date.strftime('%Y-%m-%d') }}</td>
+                <td class="{{ attendance.status }}">{{ attendance.status }}</td>
+                <td>{{ attendance.teacher.username }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">No attendance records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

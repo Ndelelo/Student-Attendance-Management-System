@@ -1,0 +1,145 @@
+{% extends 'layout.html' %}
+
+{% block title %}View Report - Attendance System{% endblock %}
+
+{% block content %}
+<div class="view-report">
+    <h2>{{ report_title }}</h2>
+    
+    <div class="report-meta">
+        <p><strong>Period:</strong> {{ start_date }} to {{ end_date }}</p>
+        <p><strong>Generated on:</strong> {{ generation_date }}</p>
+        {% if student %}
+        <p><strong>Student:</strong> {{ student.username }}</p>
+        {% endif %}
+    </div>
+    
+    <div class="report-actions">
+        <button id="print-report" class="btn btn-secondary">Print</button>
+        <button id="download-pdf" class="btn btn-secondary">Download PDF</button>
+        <button id="download-csv" class="btn btn-secondary">Download CSV</button>
+        <button id="save-template" class="btn btn-secondary">Save as Template</button>
+    </div>
+    
+    <div class="report-summary">
+        <h3>Summary</h3>
+        <div class="summary-stats">
+            <div class="stat-card">
+                <h4>Total Days</h4>
+                <p class="stat-value">{{ total_days }}</p>
+            </div>
+            <div class="stat-card">
+                <h4>Present</h4>
+                <p class="stat-value">{{ present_days }} ({{ present_percentage }}%)</p>
+            </div>
+            <div class="stat-card">
+                <h4>Absent</h4>
+                <p class="stat-value">{{ absent_days }} ({{ absent_percentage }}%)</p>
+            </div>
+            <div class="stat-card">
+                <h4>Late</h4>
+                <p class="stat-value">{{ late_days }} ({{ late_percentage }}%)</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="report-visualization">
+        <h3>Attendance Visualization</h3>
+        <div class="chart-container">
+            <!-- Placeholder for chart - would be replaced with actual chart in production -->
+            <div class="chart-placeholder">
+                <div class="bar" style="height: 80%;">
+                    <span>Present</span>
+                </div>
+                <div class="bar" style="height: 15%;">
+                    <span>Absent</span>
+                </div>
+                <div class="bar" style="height: 5%;">
+                    <span>Late</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="report-details">
+        <h3>Detailed Records</h3>
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    {% if report_type != 'student' %}
+                    <th>Student</th>
+                    {% endif %}
+                    <th>Status</th>
+                    <th>Marked By</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in attendance_records %}
+                <tr>
+                    <td>{{ record.date.strftime('%Y-%m-%d') }}</td>
+                    {% if report_type != 'student' %}
+                    <td>{{ record.student.username }}</td>
+                    {% endif %}
+                    <td class="{{ record.status }}">{{ record.status }}</td>
+                    <td>{{ record.teacher.username }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="{% if report_type != 'student' %}4{% else %}3{% endif %}">No attendance records found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Modal for saving template -->
+    <div id="template-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Save Report Template</h3>
+            <form id="save-template-form">
+                <div class="form-group">
+                    <label for="template-name">Template Name:</label>
+                    <input type="text" id="template-name" name="template_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="template-description">Description:</label>
+                    <textarea id="template-description" name="template_description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Template</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Print functionality
+        document.getElementById('print-report').addEventListener('click', function() {
+            window.print();
+        });
+        
+        // Modal for saving template
+        const modal = document.getElementById('template-modal');
+        const saveTemplateBtn = document.getElementById('save-template');
+        const closeBtn = document.querySelector('.close');
+        
+        saveTemplateBtn.onclick = function() {
+            modal.style.display = 'block';
+        }
+        
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Form submission for saving template would be handled here
+    });
+</script>
+{% endblock %}

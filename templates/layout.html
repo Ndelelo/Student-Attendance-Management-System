@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Attendance System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Attendance System</div>
+            <ul class="nav-links">
+                {% if session.get('user_id') %}
+                    {% if session.get('role') == 'student' %}
+                        <li><a href="{{ url_for('student_dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ url_for('my_attendance') }}">My Attendance</a></li>
+                    {% elif session.get('role') == 'teacher' %}
+                        <li><a href="{{ url_for('teacher_dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ url_for('mark_attendance') }}">Mark Attendance</a></li>
+                        <li><a href="{{ url_for('manage_attendance') }}">Manage Attendance</a></li>
+                        <li><a href="{{ url_for('generate_report') }}">Reports</a></li>
+                    {% elif session.get('role') == 'admin' %}
+                        <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ url_for('user_management') }}">User Management</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <div class="flash-message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Students Attendance System</p>
+    </footer>
+</body>
+</html>

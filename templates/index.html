@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home - Attendance System{% endblock %}
+
+{% block content %}
+<div class="container text-center" style="background-color: rgb(135, 173, 235); max-width: 100%; padding: 30px; margin: 0 auto;">
+    <section class="hero" style="margin: 0 auto; max-width: 800px;">
+        <h1>Student Attendance Management System</h1>
+        <p>A simple and effective way to manage attendance for educational institutions.</p>
+        <div class="cta-buttons">
+        <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+        <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
+        </div>
+    </section>
+
+    <section class="features" style="margin: 30px 0; max-width: 900px;text-align: left;">
+        <div class="row justify-content-center">
+            <div class="col-md-4 feature">
+                <h2>For Students</h2>
+                <p>Track your attendance and view your attendance records.</p>
+            </div>
+            <div class="col-md-4 feature">
+                <h2>For Teachers</h2>
+                <p>Mark and manage attendance, generate reports.</p>
+            </div>
+            <div class="col-md-4 feature">
+                <h2>For Administrators</h2>
+                <p>Manage users and system settings.</p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login - Attendance System{% endblock %}
+
+{% block content %}
+<div style="background-color: skyblue; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px;">
+    <div class="auth-form" style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 500px; width: 100%;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Login</h2>
+        <form action="{{ url_for('login') }}" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Login</button>
+        </form>
+        <p style="text-align: center; margin-top: 15px;">Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+    </div>
+</div>
+{% endblock %}

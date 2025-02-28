@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}Mark Attendance - Attendance System{% endblock %}
+
+{% block content %}
+<div class="mark-attendance">
+    <h2>Mark Attendance</h2>
+    
+    <form action="{{ url_for('mark_attendance') }}" method="post">
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" value="{{ today }}" required>
+        </div>
+        
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.username }}</td>
+                    <td>
+                        <select name="status_{{ student.id }}">
+                            <option value="present">Present</option>
+                            <option value="absent">Absent</option>
+                            <option value="late">Late</option>
+                        </select>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="2">No students found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <button type="submit" class="btn btn-primary">Submit Attendance</button>
+    </form>
+</div>
+{% endblock %}
