@@ -249,10 +249,24 @@ Partial Attendance marking
 -	Regular incremental and complete daily backups, geographically stored data, automated verification, point-in-time recovery assistance, and monthly restoration testing with recorded outcomes form part of the procedure.
 
 ## 9.	System Configuration and Customization
-**Requirement**: Versioning, reverting to prior settings, and applying upgrades without system downtime will be possible with the configuration management interface the system will provide for approved administrators.
+**Requirement**: The system should be adaptable enough to meet the particular requirements of different universities and schools so that managers and administrators can adjust important parameters.
+
+### Acceptance Criteria
+#### Custom Attendance Calculation Rules
+- Different attendance policies exist in institutions; these should be established by officials.  These guidelines cover present/late/absent criteria, grace periods, class weightage, and special, auto-excuse regulations.
+#### Configuratiuon Attendance thresholds
+- Although minimum attendance policies are enforced by institutions, they should permit establishing threshold percentages for warnings, automated notifications, and varied thresholds for different courses or programs.
+#### Multiple Campus/Department Support
+- Big institutions call for centralized control with department-level autonomy.  The system should provide hierarchical user roles, different attendance regulations, cross-campus access, and filterable data segmentation.
 
 ## 10.	Integration Capabilities
-**Requirement**: The system must be compatible with past core systems, have a completely documented API with 99.5% uptime, secure authentication using OAuth 2.0 and API keys with IP limitations.
+**Requirement**: For effective data sharing and use across departments, a student attendance management system should fit very well with current institutional systems including Student Information Systems, Learning Management Systems, and Reporting Tools.
+#### API support for external system integration
+- With security elements like OAuth 2.0 authentication for data protection, the system should be well-documented and provide APIs for external system integration, thereby enabling data retrieval, submission, and changes.
+#### Compatible with student information system
+- To guarantee automatic sync of attendance data and academic records, the system has to be interoperable with main Student Information Systems such PowerSchool, Ellucian Banner, Blackboard, and Canvas LMS.
+#### Support for standard data exchange formats
+- Smooth data flow depends on standardized data formats such as JSON, XML, and CSV, which also help to enable simple data import and export between many systems including LMS.
 
 ---
 
