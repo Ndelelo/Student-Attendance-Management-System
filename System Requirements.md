@@ -6,7 +6,7 @@
 | **FR2** | The system shall provide students access to view their attendance records. | Students |
 | **FR3** | The system shall allow administrators to generate attendance reports for analysis. | Administrators |
 | **FR4** | The system shall send automated alerts to parents if a student is absent. | Parents, Administrators |
-| **FR5** | The system shall integrate with the institution's existing database. | IT Support Team |
+| **FR5** | The system shall integrate with the institution's existing database. | IT Department |
 | **FR6** | The system shall support multiple authentication methods (e.g., username/password, biometric). | Students, Teachers, Administrators |
 
 ## Non-Functional Requirements
@@ -27,7 +27,7 @@
 | **FR2** | Students need to check their attendance records |
 | **FR3** | Administrators need to generate attendance reports |
 | **FR4** | Parents need alerts about student absences |
-| **FR5** | IT Support needs system integration |
+| **FR5** | IT Department needs system integration |
 | **FR6** | Security is required for authentication |
 | **NFR1** | Continuous system operation is required |
 | **NFR2** | The system must provide real-time attendance tracking |
