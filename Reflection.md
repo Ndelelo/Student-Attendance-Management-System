@@ -1,36 +1,52 @@
-# Reflection
+# Reflection: Challenges in Aligning Agile with Stakeholders and Implementing it in GitHub
 
-Developing a Student Attendance Management System involves multiple stakeholders with varied roles, responsibilities, and expectations. Balancing their different needs while ensuring a reliable, speedy, and convenient approach presents a significant challenge.
+## 1. Challenges in Aligning Agile with Stakeholders
 
-## Conflicting Expectations
-Different stakeholders have specific priorities:
-- **Students** desire unfettered access to attendance information and simplicity.
-- **Teachers** want a simple and quick attendance marking process.
-- **Administrators** need integrated databases and comprehensive reporting.
-- **IT support teams** focus on reliability, security, and system maintenance.
-- **Parents** seek real-time notifications and updates about their child's attendance.
+One of the key challenges I encountered when aligning Agile with stakeholders was that I was the **only stakeholder** in the project. This presented several difficulties:
 
-Meeting all these demands without compromising the system requires extensive preparation and prioritization.
+### 1.1 Lack of Diverse Input 
+- Agile thrives on collaboration and continuous feedback from multiple stakeholders.  
+- Without external input, it was difficult to validate priorities, refine user stories, or adapt to evolving needs.  
 
-## User Experience vs. System Complexity
-- A highly complex system with many features may please managers but could intimidate teachers and students.
-- Balancing ease of use with utility is crucial.
-- Implementing **role-based access** and a **minimalist interface** can help overcome usability issues.
+### 1.2 No Direct User Engagement  
+- Typically, Agile involves regular discussions with users (students, teachers, admins) to ensure the product meets real-world needs.   
+- Without other stakeholders, I had to rely on assumptions rather than actual user feedback.  
 
-## Resistance to Changes
-- Some stakeholders, particularly **management and teachers**, are accustomed to traditional attendance methods.
-- Transitioning to an electronic system may meet resistance due to unfamiliarity or fear of technological issues.
-- A successful rollout depends on **adequate training and support**.
+### 1.3 Limited Perspectives in Decision-Making   
+- In an Agile environment, stakeholders help prioritize features based on business value and user impact.  
+- Since I was the sole stakeholder, I had to make all decisions, which may have introduced bias or gaps in prioritization.  
 
-## Data Privacy and Security Concerns
-- **Administrators** prioritize data integrity and security.
-- **Students** may have privacy concerns, especially regarding locative or biometric monitoring.
-- **Trust** is built through strong **data security policies** and transparency in data usage.
+### 1.4 Challenges in Sprint Reviews & Feedback Loops   
+- Agile encourages continuous feedback through sprint reviews and retrospectives.   
+- Without other stakeholders to review progress, there was no external validation of completed features.  
 
-## Technical Limitations and Infrastructure Challenges
-- Financial and location-based factors impact the availability of modern technology in some schools.
-- Schools with outdated technology or limited internet access may struggle with implementation.
-- **Offline modes** and adaptable systems can help bridge this gap.
 
-## Conclusion
-A well-balanced attendance management system requires **good communication and continuous feedback** with a user-focused approach. Prioritizing usability, security, and scalability while addressing resistance to change will help create a system that effectively meets the needs of all stakeholders.
+## 2. Challenges in Implementing Agile in GitHub
+
+### **2.1 Structuring Agile Workflow in GitHub**  
+- Mapping Agile workflows (such as Kanban or Scrum) to GitHub tools (Projects, Issues, and Milestones) can be complex.  
+- Ensuring a proper setup with GitHub Projects and Labels improves clarity and workflow efficiency.  
+
+### **2.2 Managing User Stories & Tasks**  
+- Translating user stories into GitHub Issues requires proper structuring and tagging.  
+- Using templates for Issues and Pull Requests helps maintain consistency.  
+
+### **2.3 Tracking Progress & Burndown Charts**  
+- Unlike dedicated Agile tools (e.g., Jira, Trello), GitHub lacks built-in burndown charts.  
+- Integrating third-party tools like ZenHub or GitHub Actions can help track sprint progress effectively.  
+
+### **2.4 Collaboration & Code Reviews**  
+- Ensuring developers follow Agile best practices, such as frequent commits and pull requests, requires discipline.  
+- Setting up clear branching strategies (e.g., GitFlow) and automating code reviews with GitHub Actions improves workflow.  
+
+## Lessons Learned & Possible Solutions
+- **Seek External Input Whenever Possible**  
+  - Even if formal stakeholders aren't available, getting informal feedback from potential users (students, teachers, admins) could provide valuable insights.  
+
+- **Use Proxies for Stakeholders**  
+  - Researching similar systems or consulting subject matter experts can help simulate stakeholder perspectives.  
+
+- **Self-Check Using Agile Principles**  
+  - Regularly reviewing priorities and assumptions can help maintain objectivity and adaptability.  
+
+Despite these challenges, working within Agile principles helped me maintain focus on delivering value incrementally. Future iterations could benefit from additional user involvement to refine and validate features effectively.  
