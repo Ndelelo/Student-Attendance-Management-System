@@ -1,52 +1,29 @@
-# Reflection: Challenges in Aligning Agile with Stakeholders and Implementing it in GitHub
+## Reflection
 
-## 1. Challenges in Aligning Agile with Stakeholders
+### Challenges in Agile Development Management
+- **Template Selection**: Choosing the right template for Agile development required careful evaluation. The goal was to ensure efficient task tracking, sprint planning, and workflow visualization.
+- **Customization**: Balancing simplicity with necessary features was crucial. Essential functionalities like user roles, task dependencies, and workflow automation needed to be incorporated.
+- **Integration with Issues**: Planning was necessary to ensure a seamless connection between Kanban tasks and GitHub Issues. The integration should support real-time updates, maintain data consistency, and minimize manual effort.
 
-One of the key challenges I encountered when aligning Agile with stakeholders was that I was the **only stakeholder** in the project. This presented several difficulties:
+After selecting the Kanban template, the Automated Kanban template was not available by default due to GitHub's recent update to its Projects system. Instead, GitHub now provides a more flexible custom board setup, requiring manual setup of automated Kanban workflows.
 
-### 1.1 Lack of Diverse Input 
-- Agile thrives on collaboration and continuous feedback from multiple stakeholders.  
-- Without external input, it was difficult to validate priorities, refine user stories, or adapt to evolving needs.  
+### Steps to Automate Task Movements using GitHub Actions
+#### Install GitHub Command Line
+- Since the workflow uses GitHub CLI (`gh project item update`), the `gh` CLI must be installed on my machine.
 
-### 1.2 No Direct User Engagement  
-- Typically, Agile involves regular discussions with users (students, teachers, admins) to ensure the product meets real-world needs.   
-- Without other stakeholders, I had to rely on assumptions rather than actual user feedback.  
+#### Authenticate GitHub CLI with a Personal Access Token (PAT)
+- Since GitHub Actions runs in a CI/CD environment, it needs a GitHub Token with proper permissions.
 
-### 1.3 Limited Perspectives in Decision-Making   
-- In an Agile environment, stakeholders help prioritize features based on business value and user impact.  
-- Since I was the sole stakeholder, I had to make all decisions, which may have introduced bias or gaps in prioritization.  
+#### Generate a Personal Access Token (PAT)
+- Used for Continuous Integration/Deployment and pipelines to authenticate and perform automated deployments.
 
-### 1.4 Challenges in Sprint Reviews & Feedback Loops   
-- Agile encourages continuous feedback through sprint reviews and retrospectives.   
-- Without other stakeholders to review progress, there was no external validation of completed features.  
-
-
-## 2. Challenges in Implementing Agile in GitHub
-
-### **2.1 Structuring Agile Workflow in GitHub**  
-- Mapping Agile workflows (such as Kanban or Scrum) to GitHub tools (Projects, Issues, and Milestones) can be complex.  
-- Ensuring a proper setup with GitHub Projects and Labels improves clarity and workflow efficiency.  
-
-### **2.2 Managing User Stories & Tasks**  
-- Translating user stories into GitHub Issues requires proper structuring and tagging.  
-- Using templates for Issues and Pull Requests helps maintain consistency.  
-
-### **2.3 Tracking Progress & Burndown Charts**  
-- Unlike dedicated Agile tools (e.g., Jira, Trello), GitHub lacks built-in burndown charts.  
-- Integrating third-party tools like ZenHub or GitHub Actions can help track sprint progress effectively.  
-
-### **2.4 Collaboration & Code Reviews**  
-- Ensuring developers follow Agile best practices, such as frequent commits and pull requests, requires discipline.  
-- Setting up clear branching strategies (e.g., GitFlow) and automating code reviews with GitHub Actions improves workflow.  
-
-## Lessons Learned & Possible Solutions
-- **Seek External Input Whenever Possible**  
-  - Even if formal stakeholders aren't available, getting informal feedback from potential users (students, teachers, admins) could provide valuable insights.  
-
-- **Use Proxies for Stakeholders**  
-  - Researching similar systems or consulting subject matter experts can help simulate stakeholder perspectives.  
-
-- **Self-Check Using Agile Principles**  
-  - Regularly reviewing priorities and assumptions can help maintain objectivity and adaptability.  
-
-Despite these challenges, working within Agile principles helped me maintain focus on delivering value incrementally. Future iterations could benefit from additional user involvement to refine and validate features effectively.  
+### Comparison of GitHub Projects, Trello, and Jira
+| Feature            | GitHub Projects | Trello | Jira |
+|-------------------|---------------|--------|------|
+| **Agile Support** | Yes, supports Kanban and customizable workflows | Basic Agile support via Kanban boards | Advanced support for Scrum, Kanban, and SAFe |
+| **Automation** | Built-in automation via GitHub Actions and project rules | Limited (Power-Ups required for automation) | Extensive automation with customizable rules and integrations |
+| **Issue Tracking** | Fully integrated with GitHub Issues | Separate (requires third-party tools for issue tracking) | Advanced issue tracking with backlog management, sprints, and reporting |
+| **Customization** | Moderate (Limited board customization, but flexible labels and fields) | Highly customizable (Power-Ups, labels, workflows) | Highly customizable (Custom workflows, reports, dashboards) |
+| **Collaboration** | Best for Dev Teams (Direct GitHub repo integration) | Great for General Teams (Easy to use, integrates with many apps) | Best for Large Teams (Comprehensive collaboration features) |
+| **Best For** | Developers & GitHub Users managing code-related tasks | Small teams & simple task management | Large organizations with structured Agile workflows |
+| **Cost** | Free for basic use (Paid plans available) | Free for individuals (Paid features via Power-Ups) | Paid (Limited free plan, full features require subscription) |
