@@ -1,29 +1,76 @@
-## Reflection
+# Reflection
 
-### Challenges in Agile Development Management
-- **Template Selection**: Choosing the right template for Agile development required careful evaluation. The goal was to ensure efficient task tracking, sprint planning, and workflow visualization.
-- **Customization**: Balancing simplicity with necessary features was crucial. Essential functionalities like user roles, task dependencies, and workflow automation needed to be incorporated.
-- **Integration with Issues**: Planning was necessary to ensure a seamless connection between Kanban tasks and GitHub Issues. The integration should support real-time updates, maintain data consistency, and minimize manual effort.
+---
 
-After selecting the Kanban template, the Automated Kanban template was not available by default due to GitHub's recent update to its Projects system. Instead, GitHub now provides a more flexible custom board setup, requiring manual setup of automated Kanban workflows.
+## 1. Challenges in Choosing Granularity for States and Actions
 
-### Steps to Automate Task Movements using GitHub Actions
-#### Install GitHub Command Line
-- Since the workflow uses GitHub CLI (`gh project item update`), the `gh` CLI must be installed on my machine.
+Finding the appropriate level of detail is a major challenge when designing Activity Diagrams (ADs) and State Transition Diagrams (STDs).
 
-#### Authenticate GitHub CLI with a Personal Access Token (PAT)
-- Since GitHub Actions runs in a CI/CD environment, it needs a GitHub Token with proper permissions.
+### Key Challenges:
+- **Too Elaborate**: Diagrams become cluttered and hard to interpret, leading to maintenance issues.
+- **Too Abstract**: Critical system behavior may be overlooked, reducing accuracy.
 
-#### Generate a Personal Access Token (PAT)
-- Used for Continuous Integration/Deployment and pipelines to authenticate and perform automated deployments.
+### Example:
+- **Modeling Student State**:  
+  Should there be just one "Enrolled" state, or should we distinguish between "Registered", "Verified", and "Active"?
+- **Attendance Marking**:  
+  Should every teacher action be collapsed into a single "Mark Attendance" node, or broken down into multiple steps?
 
-### Comparison of GitHub Projects, Trello, and Jira
-| Feature            | GitHub Projects | Trello | Jira |
-|-------------------|---------------|--------|------|
-| **Agile Support** | Yes, supports Kanban and customizable workflows | Basic Agile support via Kanban boards | Advanced support for Scrum, Kanban, and SAFe |
-| **Automation** | Built-in automation via GitHub Actions and project rules | Limited (Power-Ups required for automation) | Extensive automation with customizable rules and integrations |
-| **Issue Tracking** | Fully integrated with GitHub Issues | Separate (requires third-party tools for issue tracking) | Advanced issue tracking with backlog management, sprints, and reporting |
-| **Customization** | Moderate (Limited board customization, but flexible labels and fields) | Highly customizable (Power-Ups, labels, workflows) | Highly customizable (Custom workflows, reports, dashboards) |
-| **Collaboration** | Best for Dev Teams (Direct GitHub repo integration) | Great for General Teams (Easy to use, integrates with many apps) | Best for Large Teams (Comprehensive collaboration features) |
-| **Best For** | Developers & GitHub Users managing code-related tasks | Small teams & simple task management | Large organizations with structured Agile workflows |
-| **Cost** | Free for basic use (Paid plans available) | Free for individuals (Paid features via Power-Ups) | Paid (Limited free plan, full features require subscription) |
+### Best Practices:
+- Use **high-level states** for clarity.
+- Employ **nested states** or **sub-diagrams** when more detail is necessary.
+- Model from the **user’s perspective**—developers might prefer technical details, but simplicity aids usability.
+
+---
+
+## 2. Aligning Agile User Stories with Diagrams
+
+Agile development focuses on **user-centric**, incremental builds, while UML diagrams often attempt to model the entire system upfront.
+
+### Challenges:
+- **Rigid structure** of diagrams doesn't always align with Agile's **flexibility**.
+- **Traceability** becomes complex when one user story affects multiple diagrams or flows.
+
+### Example:
+- **User Story**: "As a Teacher, I want to mark attendance for my class."
+  - **Activity Diagram**: Login → Select Class → Mark Present/Absent → Submit
+  - **State Diagram**:  
+    - *Student*: Present ↔ Absent  
+    - *System*: Draft → Submitted
+- Agile iteration may later add "Bulk Marking" or "AI-based Attendance", requiring diagram updates.
+
+### Perfect Practice:
+- Use **lightweight diagrams** that are easy to evolve with Agile sprints.
+- Prefer **modular diagrams** over monolithic ones.
+- Focus on **core workflows** first—perfect coverage can come later.
+
+---
+
+## 3. Comparing State Diagrams vs. Activity Diagrams
+
+| **Aspect**       | **State Transition Diagram (STD)**                                | **Activity Diagram (AD)**                                  |
+|------------------|--------------------------------------------------------------------|-------------------------------------------------------------|
+| **Focus**        | Object behavior over time                                          | Process and workflow execution                              |
+| **Use Case**     | Lifecycle of objects (e.g., a student from registration to grad)   | Task sequences (e.g., a teacher marking attendance)         |
+| **Example**      | Student: Unregistered → Registered → Verified → Graduated         | Login → Select Class → Mark → Submit                        |
+| **Best for**     | Modeling constraints (e.g., avoid duplicate attendance)            | Understanding user flow and decision points                 |
+| **Challenges**   | Choosing meaningful states, concurrency                            | Managing complexity when multiple actors are involved       |
+
+---
+
+## Lessons Learned: Reflection on System Modeling
+
+### Granularity in Diagrams:
+- Balance between **detail and abstraction** is key.
+- Use **nested states** where deeper clarity is needed.
+- Always model with the **end user** in mind.
+
+### Agile Compatibility:
+- Traditional UML may be out of sync with Agile flow.
+- Diagrams can become obsolete as user stories change.
+- Use **modular, updatable, lightweight diagrams** to support agile iterations.
+
+### Combining Diagram Types:
+- **STDs** model system rules and object states.
+- **ADs** highlight user interactions and task flows.
+- Combining both gives a **complete view** of the system from both behavioral and functional perspectives.
