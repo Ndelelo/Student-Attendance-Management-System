@@ -12,4 +12,7 @@ The project aims to provide an intuitive and user-friendly interface for teacher
 ## Links to Other Documents
 - [Specification](./SPECIFICATION.md)
 - [Architecture](./ARCHITECTURE.md)
+- [Design Decisions and Language Choice](docs/Design-Decisions.md)
+- [Creational_patterns](Justification.md)
+- ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 
