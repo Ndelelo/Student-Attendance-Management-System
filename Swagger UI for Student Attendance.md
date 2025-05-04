@@ -15,17 +15,17 @@ Once the app is running (via `uvicorn main:app --reload`), open your browser and
 ## 📷 Swagger UI Screenshots
 
 ### 1. Overview Page
-![Swagger UI](Swagger%20UI.jpg)
+![Swagger UI](Swagger%20UI.JPG)
 
 ---
 
 ### 2. Student API Example
-![Student Endpoint - Swagger](swagger2.jpg)
+![Student Endpoint - Swagger](Swagger2.JPG)
 
 ---
 
 ### 3. Attendance API Example
-![Attendance Endpoint - Swagger](swagger3.jpg)
+![Attendance Endpoint - Swagger](Swagger3.JPG)
 
 ---
 
