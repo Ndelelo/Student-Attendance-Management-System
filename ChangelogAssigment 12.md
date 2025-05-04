@@ -4,7 +4,6 @@
 ### Added
 - Initial release of the API for managing student attendance records.
 
-## [1.0.0] - 2025-05-04
 ### Features
 - **Student Management API**
   - `POST /students`: Create a new student record.
@@ -30,7 +29,6 @@
 - Fixed issue with filtering attendance by date, which previously returned incorrect results.
 - Fixed issue where creating a new student with an existing email would throw a server error instead of a validation error.
 
-## [0.9.0] - 2025-04-30
 ### Added
 - **Basic API Structure**
   - Endpoints for adding, updating, and deleting students, courses, and attendance records.
@@ -44,7 +42,6 @@
 - Fixed incorrect HTTP status codes for `GET /students` when no records were found (previously returned 500, now returns 404).
 - Fixed bug in the `PUT /students/{id}` endpoint where blank fields were not being handled correctly.
 
-## [0.8.0] - 2025-04-15
 ### Added
 - Initial endpoints for managing student records:
   - `POST /students`: Create student.
