@@ -1,0 +1,517 @@
+openapi: 3.1.0
+info:
+  title: Student Attendance System
+  description: API for managing students, courses, and attendance records.
+  version: 1.0.0
+paths:
+  /:
+    get:
+      summary: Read Home
+      operationId: read_home__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            text/html:
+              schema:
+                type: string
+  /students:
+    get:
+      summary: Read Students
+      operationId: read_students_students_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            text/html:
+              schema:
+                type: string
+  /courses:
+    get:
+      summary: Read Courses
+      operationId: read_courses_courses_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            text/html:
+              schema:
+                type: string
+  /attendance:
+    get:
+      summary: Read Attendance
+      operationId: read_attendance_attendance_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            text/html:
+              schema:
+                type: string
+  /api/students/:
+    get:
+      tags:
+      - students
+      summary: Get Students
+      operationId: get_students_api_students__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Student'
+                type: array
+                title: Response Get Students Api Students  Get
+    post:
+      tags:
+      - students
+      summary: Create Student
+      operationId: create_student_api_students__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentCreate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/students/{student_id}:
+    get:
+      tags:
+      - students
+      summary: Get Student
+      operationId: get_student_api_students__student_id__get
+      parameters:
+      - name: student_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Student Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - students
+      summary: Update Student
+      operationId: update_student_api_students__student_id__put
+      parameters:
+      - name: student_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Student Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentBase'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - students
+      summary: Delete Student
+      operationId: delete_student_api_students__student_id__delete
+      parameters:
+      - name: student_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Student Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/courses/:
+    get:
+      tags:
+      - courses
+      summary: Get Attendance
+      operationId: get_attendance_api_courses__get
+      parameters:
+      - name: student_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Student Id
+      - name: course_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Course Id
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          title: Start Date
+      - name: end_date
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          title: End Date
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Attendance'
+                title: Response Get Attendance Api Courses  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - courses
+      summary: Create Attendance
+      operationId: create_attendance_api_courses__post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttendanceCreate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Attendance'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/courses/{attendance_id}:
+    get:
+      tags:
+      - courses
+      summary: Get Attendance By Id
+      operationId: get_attendance_by_id_api_courses__attendance_id__get
+      parameters:
+      - name: attendance_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Attendance Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Attendance'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - courses
+      summary: Update Attendance
+      operationId: update_attendance_api_courses__attendance_id__put
+      parameters:
+      - name: attendance_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Attendance Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttendanceBase'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Attendance'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - courses
+      summary: Delete Attendance
+      operationId: delete_attendance_api_courses__attendance_id__delete
+      parameters:
+      - name: attendance_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Attendance Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/courses/batch:
+    post:
+      tags:
+      - courses
+      summary: Batch Create Attendance
+      operationId: batch_create_attendance_api_courses_batch_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/AttendanceCreate'
+              type: array
+              title: Attendances
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Attendance:
+      properties:
+        student_id:
+          type: integer
+          title: Student Id
+        course_id:
+          type: integer
+          title: Course Id
+        date:
+          type: string
+          format: date
+          title: Date
+        status:
+          type: string
+          title: Status
+        id:
+          type: integer
+          title: Id
+      type: object
+      required:
+      - student_id
+      - course_id
+      - date
+      - status
+      - id
+      title: Attendance
+    AttendanceBase:
+      properties:
+        student_id:
+          type: integer
+          title: Student Id
+        course_id:
+          type: integer
+          title: Course Id
+        date:
+          type: string
+          format: date
+          title: Date
+        status:
+          type: string
+          title: Status
+      type: object
+      required:
+      - student_id
+      - course_id
+      - date
+      - status
+      title: AttendanceBase
+    AttendanceCreate:
+      properties:
+        student_id:
+          type: integer
+          title: Student Id
+        course_id:
+          type: integer
+          title: Course Id
+        date:
+          type: string
+          format: date
+          title: Date
+        status:
+          type: string
+          title: Status
+      type: object
+      required:
+      - student_id
+      - course_id
+      - date
+      - status
+      title: AttendanceCreate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Student:
+      properties:
+        name:
+          type: string
+          title: Name
+        email:
+          type: string
+          title: Email
+        student_id:
+          type: string
+          title: Student Id
+        id:
+          type: integer
+          title: Id
+      type: object
+      required:
+      - name
+      - email
+      - student_id
+      - id
+      title: Student
+    StudentBase:
+      properties:
+        name:
+          type: string
+          title: Name
+        email:
+          type: string
+          title: Email
+        student_id:
+          type: string
+          title: Student Id
+      type: object
+      required:
+      - name
+      - email
+      - student_id
+      title: StudentBase
+    StudentCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        email:
+          type: string
+          title: Email
+        student_id:
+          type: string
+          title: Student Id
+      type: object
+      required:
+      - name
+      - email
+      - student_id
+      title: StudentCreate
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
