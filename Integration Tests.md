@@ -117,7 +117,7 @@ These integration tests ensure that the components of the system (students, cour
 
 ## Visual Reports
 
-![Integration Tests Report](integration_tests_report.jpg)
+![Integration Tests Report](integration_tests_report.JPG)
 
 ## Conclusion
 
