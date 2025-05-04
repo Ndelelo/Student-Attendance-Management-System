@@ -65,7 +65,7 @@ This report summarizes the results of the unit tests for the business logic of t
 
 ## Visual Report
 
-![Unit Tests Report](Unit%20tests.jpg)
+![Unit Tests Report](Unit%20tests.JPG)
 
 ## Conclusion
 
