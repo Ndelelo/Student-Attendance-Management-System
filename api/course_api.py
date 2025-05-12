@@ -61,6 +61,7 @@ def get_attendance_by_id(attendance_id: int):
 
 @router.post("/", response_model=Attendance)
 def create_attendance(attendance: AttendanceCreate):
+    # No need for global as we're only reading and appending, not reassigning
     new_id = max(a["id"] for a in attendance_db) + 1 if attendance_db else 1
     new_attendance = {"id": new_id, **attendance.dict()}
     attendance_db.append(new_attendance)
@@ -76,14 +77,17 @@ def update_attendance(attendance_id: int, attendance: AttendanceBase):
 
 @router.delete("/{attendance_id}")
 def delete_attendance(attendance_id: int):
-    global attendance_db
-    attendance_db = [a for a in attendance_db if a["id"] != attendance_id]
+    # We're modifying the list in place, not reassigning, so no global needed
+    original_length = len(attendance_db)
+    attendance_db[:] = [a for a in attendance_db if a["id"] != attendance_id]
+    if len(attendance_db) == original_length:
+        raise HTTPException(status_code=404, detail="Attendance record not found")
     return {"message": "Attendance record deleted successfully"}
 
 # Batch update attendance
 @router.post("/batch")
 def batch_create_attendance(attendances: List[AttendanceCreate]):
-    global attendance_db
+    # No need for global as we're only appending, not reassigning
     results = []
     
     for attendance in attendances:
