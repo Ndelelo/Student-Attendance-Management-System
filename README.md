@@ -8,7 +8,6 @@ The Student Attendance Management System is a software application designed to a
 
 The project aims to provide an intuitive and user-friendly interface for teachers and administrators to mark and manage attendance records efficiently. The system will store attendance data, generate reports, and provide insights into student participation. It can be integrated with biometric systems, RFID cards, or manual input for flexibility.
 # Project Documentation
-- [System Requirement](./System-Requirements.md)
 
 ## Links to Other Documents
 - [Specification](./SPECIFICATION.md)
