@@ -10,7 +10,8 @@ The project aims to provide an intuitive and user-friendly interface for teacher
 # Project Documentation
 - [CONTRIBUTING](./contributing.md)
 - [ROADMAP](./roadmap.md)
-- [LICENSE](./licence.md)
+- [LICENSE](./license.md)
+- Labeled Issues
 - ![Labeled Issues](./issues.JPG)
 
 ## Links to Other Documents
