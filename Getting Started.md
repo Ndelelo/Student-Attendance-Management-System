@@ -88,8 +88,8 @@ Below are some key areas where contributions are welcome:
 
 ## Documentation
 
-- [Contributing Guidelines](./CONTRIBUTING.md)
-- [Roadmap](./ROADMAP.md)
+- [Contributing Guidelines](./contributing.md)
+- [Roadmap](./roadmap.md)
 - [API Documentation](./docs/api.md) (coming soon)
 
 ## Testing
@@ -109,7 +109,7 @@ pytest
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](license.md) file for details.
 
 ## Acknowledgments
 
